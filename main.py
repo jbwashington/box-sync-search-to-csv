@@ -1,25 +1,31 @@
 import requests, browsercookie
 from bs4 import BeautifulSoup as bs
 
-def get_results():
-    """takes no arguments, returns the results of a PST search in Box.com"""
+url='https://cbs.app.box.com/folder/0/search'
+query='*.pst'
+page_number='0'
+
+def scrape_page(url, query, page_number):
+
+    """takes the search URL string, search, and page number;
+    returns the results of a PST search in Box.com"""
+
+    query = 'query'
+    page_number = 'pageNumber'
 
     payload = {
-            'query': '*.pst', 
-            'pageSize' : '500', 
-            'sortDirection' : 'desc', 
-            'folderID' : '0', 
-            'pageNumber' : '0'
+            'query': query,
+            'pageSize' : '1000',
+            'sortDirection' : 'desc',
+            'folderID' : '0',
+            'pageNumber' : page_number
             }
-
-    prefix = 'https://cbs.app.box.com'
-    suffix = '/folder/0/search'
 
     # dump session cookies from browser into object
     cj = browsercookie.load()
 
     # use cookie object in GET request
-    r = requests.get(prefix+suffix, params=payload, cookies=cj)
+    r = requests.get(url, params=payload, cookies=cj)
 
     # store response to GET request in object
     response_body = r.content
@@ -31,11 +37,11 @@ def get_results():
 
     file_list = soup('ol', attrs={'class': "file-list-body"})
 
-    if file_list is None:
-        print("nothing showing, so you're likely not authenticated in browser.  log in to your account within Firefox, exit the browser, then retry.")
+    if len(file_list) == 0:
+        print("nothing showing, so you're likely not authenticated in browser.")
     else:
         count = []
-        print('result count =>', len(file_list))
+        print('result count: ', len(file_list))
 
     file_titles = soup('a', attrs={'class': "item-name-link"})
     file_link = soup('a', attrs={'a': "href"})
@@ -50,3 +56,4 @@ def get_results():
         file_list[title] = prefix + i.attrs['href']
 
     return file_list
+
