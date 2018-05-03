@@ -31,8 +31,8 @@ def make_soup(response_body):
     soup = BeautifulSoup(response_body, 'lxml')
     return soup
 
-def get_result_list(query, page_size='1000', page_number='0'):
-    """takes a search parameter string and page number, returns extracted data from soup object """
+def send_payload(query, page_size='1000', page_number='0'):
+    """takes a search parameter string and page number, returns dictionary with payload """
 
     payload = {
             'query': query, 
@@ -46,19 +46,19 @@ def get_result_list(query, page_size='1000', page_number='0'):
             'pageNumber' : page_number
             }
 
-    r = get_response(URL, payload)
-    soup = make_soup(r)
-    result_list = extract_data(soup, LINK_CLASS)
-    return result_list
+    return payload
+
 
 
 if __name__ == '__main__':
 
     print('=========================================')
+    payload = send_payload(QUERY, PAGE_SIZE, PAGE_NUMBER)
+    response = get_response(URL, payload)
+    soup_object = make_soup(response)
+    result_list = extract_data(soup_object, LINK_CLASS)
 
-    a = get_result_list(QUERY, PAGE_SIZE, PAGE_NUMBER)
-
-    print(a)
+    print(result_list[0]) # !TODO: extract relevant info from this list 
 
     print('=========================================')
 
