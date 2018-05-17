@@ -1,4 +1,5 @@
-# get_response.py
+# app.py
+
 import parse_response as pr
 
 # GLOBAL VARIABLES
@@ -25,10 +26,8 @@ if __name__ == '__main__':
     payload = pr.send_payload(QUERY, PAGE_SIZE, PAGE_NUMBER)
     response = pr.get_response(URL, payload)
     soup_object = pr.make_soup(response)
-    table = pr.extract_table(soup_object, BASE_URL)
-    # data = pr.extract_col(table)
-
-    print(table) # !TODO: extract relevant info from this list 
-    print(type(table))
+    result = pr.get_result(soup_object)
+    # TODO: MAKE IT PARSE MORE THAN ONE RESULT INTO A DICTIONARY OF LISTS
+    print(result)
     print('=========================================')
 

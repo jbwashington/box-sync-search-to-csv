@@ -7,22 +7,15 @@ import pandas as pd
 # functions
 # =========
 
-def extract_col(row):
-    """iterates over a beautifulsoup list of strings and returns all the rows"""
-    col = [row]
-    # headers = [ th.text for th in header ]
-    for x in row:
-        col[x] = extract_row(x)
-    return col
+def get_result(soup):
+    """takes a Soup Object returns a list """
+    title = soup.find("div", class_='item-name file-list-name')
+    modified = soup.find("div", class_='item-modified-and-size')
+    breadcrumbs = soup.find("div", class_='item-breadcrumbs')
+    href = soup.find("a", class_="item-name-link")
+    result = [title.text, modified.text, breadcrumbs.text, href.attrs['href']]
+    return result
 
-def extract_table(soup, url=None):
-    """takes a list element in a soup element object and returns parsed data """
-    title = soup.find_all("div", class_='item-name file-list-name')
-    modified = soup.find_all("div", class_='item-modified-and-size')
-    breadcrumbs = soup.find_all("div", class_='item-breadcrumbs')
-    href = soup.find_all('a')
-    table = [title, modified, breadcrumbs, href]
-    return table
 
 def make_soup(response_body):
     """takes response content and returns BeautifulSoup object"""
