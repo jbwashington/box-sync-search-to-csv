@@ -48,7 +48,7 @@ gunicorn==19.1.1
 hn==0.2.2
 howdoi==1.1.13
 html5lib==1.0.1
-httplib2==0.9
+httplib2==0.19.0
 hyperlink==18.0.0
 idna==2.6
 incremental==17.5.0
