@@ -61,7 +61,7 @@ iso-639==0.4.5
 iso3166==0.8
 itsdangerous==0.24
 jdcal==1.4
-Jinja2==2.7.3
+Jinja2==2.11.3
 jinja2-time==0.2.0
 jmespath==0.9.3
 jsonschema==2.6.0
