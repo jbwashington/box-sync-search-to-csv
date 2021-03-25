@@ -111,7 +111,7 @@ PySocks==1.6.8
 pyte==0.7.0
 python-dateutil==2.2
 pytz==2018.4
-PyYAML==3.11
+PyYAML==5.4
 pyzmq==17.0.0
 queuelib==1.5.0
 requests==2.18.4
