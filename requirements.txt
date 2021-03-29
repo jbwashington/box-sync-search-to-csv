@@ -104,7 +104,7 @@ pycparser==2.18
 pycrypto==2.6
 pycryptodome==3.5.1
 PyDispatcher==2.0.5
-Pygments==2.2.0
+Pygments==2.7.4
 pyOpenSSL==17.5.0
 pyquery==1.4.0
 PySocks==1.6.8
