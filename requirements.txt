@@ -67,7 +67,7 @@ jmespath==0.9.3
 jsonschema==2.6.0
 jupyter-client==5.2.3
 jupyter-core==4.4.0
-jupyterlab==0.32.0
+jupyterlab==1.2.21
 jupyterlab-discovery==5.0.2
 jupyterlab-github==0.5.0
 jupyterlab-launcher==0.10.5
