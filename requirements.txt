@@ -75,7 +75,7 @@ keyring==12.1.0
 latex==0.7.0
 lxml==4.1.1
 MarkupSafe==0.23
-mistune==0.8.3
+mistune==2.0.3
 nbconvert==5.3.1
 nbformat==4.4.0
 nose==1.2.1
