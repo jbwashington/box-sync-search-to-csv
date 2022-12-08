@@ -16,7 +16,7 @@ boto==2.34.0
 boto3==1.7.1
 botocore==1.10.6
 browsercookie==0.7.2
-certifi==2018.1.18
+certifi==2022.12.7
 cffi==1.11.5
 chardet==3.0.4
 clan==0.1.3
